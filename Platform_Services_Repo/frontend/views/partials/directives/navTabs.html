@@ -1,0 +1,8 @@
+<div class="tabsContainer {{customClass}}">
+    <div ng-repeat="tab in tabs"
+         ng-click="onTabClick(tab);"
+         class="inline-block five-cells pointer padding text-center {{subCustomClass}}"
+         ng-class="{'selected': selectedTab.id === tab.id}">
+        <span>{{tab.name}}</span>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <!--<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7">--> <![endif]-->
+<!--[if IE 7]>         <!--<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8">--> <![endif]-->
+<!--[if IE 8]>         <!--<html lang="en" ng-app="myApp" class="no-js lt-ie9">--> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Media App</title>
+    <base href="/">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/navBar.css">
+
+    <!--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">-->
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body ng-app="mediaApp">
+
+<nav-bar></nav-bar>
+
+<div ui-view=""></div>
+
+<div class="footerContainer">Footer</div>
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/localforage/dist/localforage.js"></script>
+<script src="bower_components/angular-localforage/dist/angular-localForage.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>-->
+
+<script src="extensions/angular-bootstrap-partial.js"></script>
+
+<script src="scripts/app.js"></script>
+
+<script src="scripts/states/homePage.js"></script>
+
+<script src="scripts/directives/navBar.js"></script>
+
+<script src="scripts/controllers/homePage.js"></script>
+<script src="scripts/controllers/loginPage.js"></script>
+
+<script src="scripts/managers/configurationManager.js"></script>
+<script src="scripts/managers/vodManager.js"></script>
+<script src="scripts/managers/userManager.js"></script>
+
+<script src="scripts/services/configurationService.js"></script>
+<script src="scripts/services/vodService.js"></script>
+<script src="scripts/services/userService.js"></script>
+
+<script src="scripts/commons/restClient.js"></script>
+<script src="scripts/constants.js"></script>
+</body>
+</html>

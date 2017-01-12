@@ -1,0 +1,30 @@
+<div class="homePageContainer">
+    <table id="table" class="table table-hover table-mc-light-blue">
+        <thead>
+            <tr><th>#No</th>
+                <th>Project ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th></th>
+                <th>
+                    <custom-button name="Add New Project"
+                                   on-click="addNewProject();"
+                                   custom-class="float-right">
+                    </custom-button>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="pointer" ng-click="navigateToProject(project);" ng-repeat="project in projects">
+                <td>{{$index + 1}}</td>
+                <td>{{project.id}}</td>
+                <td>{{project.name}}</td>
+                <td>{{project.description || 'no description'}}</td>
+                <td ng-click="updateProject(project);$event.stopPropagation();">edit</td>
+                <td ng-click="deleteProject(project);$event.stopPropagation();">delete</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

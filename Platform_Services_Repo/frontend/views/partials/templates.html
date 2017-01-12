@@ -1,0 +1,60 @@
+<div class="templatesContainer">
+    <div class="text-right">
+        <custom-button on-click="addNewTemplate();"
+                       custom-class="inline-block"
+                       name="Add New Template">
+        </custom-button>
+
+        <div class="templateHolder float-left">
+            <div ng-repeat="template in templates"
+                 ng-click="showTemplateConfiguration(template);"
+                 class="inline-block template pointer"
+                 ng-show="!selectedOVPId || selectedOVPId === template.ovp">
+                <table class="table table-hover table-mc-light-blue">
+                    <tbody>
+                    <tr>
+                        <td><span>Name</span><span class="float-right"> :</span></td>
+                        <td>{{template.name}}</td>
+                    </tr>
+                    <!-- <tr>
+                        <td><span>OVP</span><span class="float-right"> :</span></td>
+                        <td>{{template.ovp}}</td>
+                    </tr>
+                    <tr>
+                        <td><span>OVP URL</span><span class="float-right"> :</span></td>
+                        <td>{{template.ovpUrl}}</td>
+                    </tr>
+                    <tr>
+                        <td><span>OVP URL Type</span><span class="float-right"> :</span></td>
+                        <td>{{template.ovpUrlType}}</td>
+                    </tr> -->
+                    <tr>
+                        <td><span>Description</span><span class="float-right"> :</span></td>
+                        <td>{{template.description}}</td>
+                    </tr>
+                    <tr>
+                        <td><span>Action</span><span class="float-right"></span></td>
+                        <table style="margin-left:50px;">
+                        <tbody>
+                           <tr ng-repeat="(key, data) in template.action">
+                                <td><span style="text-transform: uppercase;">{{key}}</span></td>
+                                <td title="{{data}}" class="template-url"
+                                    style="border-bottom: 1px solid #ddd;">{{data}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <div class="buttonContainer">
+                    <div ng-click="updateTemplate(template);$event.stopPropagation();">Update</div>
+                    <div ng-click="deleteTemplate(template);$event.stopPropagation();">Delete</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="configurationContainer">
+
+</div>

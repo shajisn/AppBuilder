@@ -1,0 +1,90 @@
+<div>
+    <div id="globalConfiguration" class="header text-center">
+        <div class="inline-block">
+            <span>Global Configuration</span>
+        </div>
+        <div class="inline-block">
+            <select ng-options="profile.id as profile.name for profile in profiles"
+                    ng-change="changeProfileIdInGlobalConfig(project.globalConfiguration.profileId)"
+                    ng-model="project.globalConfiguration.profileId">
+            </select>
+        </div>
+    </div>
+    <div class="projectContainer box">
+        <div class="applicationContainer box half-width">
+            <div class="title table-head">
+                <span>Applications</span>
+            </div>
+            <div class="content">
+                <table class="table table-hover table-mc-light-blue">
+                    <thead>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th></th>
+                    <th>
+                        <custom-button name="Add New Application"
+                                       custom-class="float-right"
+                                       on-click="addNewApplication()" >
+                        </custom-button>
+                    </th>
+                    </thead>
+                    <tbody>
+                    <tr
+                            ng-click="changeApplication(application);"
+                            ng-repeat="application in applications track by $index"
+                            ng-class="{'selected': selectedApplication.id === application.id}">
+
+                        <td>{{application.name}}</td>
+                        <td>{{application.description}}</td>
+                        <td ng-click="updateApplication(application);">Edit</td>
+                        <td ng-click="deleteApplication(application);">Delete</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="rulesContainer ">
+            <div class="title">
+                <span>Rules For {{selectedApplication.name}}</span>
+            </div>
+            <div class="content">
+                <table id="table" class="table table-hover table-mc-light-blue">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>profileName</th>
+                        <th></th>
+                        <th>
+                            <custom-button name="Add New Rule"
+                                           on-click="addNewRule();"
+                                           custom-class="float-right">
+                            </custom-button>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-show="rule.applicationId === selectedApplication.id" ng-repeat="rule in rules track by $index">
+                        <td>{{rule.id}}</td>
+                        <td>{{rule.name}}</td>
+                        <td>{{rule.description}}</td>
+                        <td>
+                            <select
+                                    ng-model="rule.profileId"
+                                    ng-options="profile.id as profile.name for profile in profiles"
+                                    ng-change="changeProfileInRule(rule);">
+                            </select>
+                        </td>
+                        <td ng-click="updateRule(rule);">Edit</td>
+                        <td ng-click="deleteRule(rule);">Delete</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>

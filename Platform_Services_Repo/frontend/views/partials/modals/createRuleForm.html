@@ -1,0 +1,36 @@
+<div class="createProjectFormContainer">
+
+    <div class="error" ng-if="error">{{error}}</div>
+    <form>
+        <h1>{{heading}}</h1>
+        <div class="item-container">
+            <span>Name: </span>
+            <input placeholder="" type="text" ng-model="ruleObj.name">
+        </div>
+        <div class="item-container">
+            <span>Description: </span>
+            <textarea placeholder="" ng-model="ruleObj.description"></textarea>
+        </div>
+
+        <div class="item-container">
+            <span>Application: </span>
+            <select ng-model="ruleObj.applicationId"
+                    ng-options="application.id as application.name for application in applications">
+            </select>
+        </div>
+
+        <div class="item-container">
+            <span>Profile: </span>
+            <select ng-model="ruleObj.profileId"
+                    ng-options="profile.id as profile.name for profile in profiles">
+            </select>
+        </div>
+        <div class="button-container text-center">
+            <button ng-click="dismiss();" class="white-background">Cancel</button>
+            <button ng-click="save();" class="blue-background">Save</button>
+        </div>
+    </form>
+
+
+
+</div>

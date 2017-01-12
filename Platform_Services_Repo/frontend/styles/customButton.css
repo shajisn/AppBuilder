@@ -1,0 +1,35 @@
+.button {
+    position: relative;
+    padding: 0px 6px;
+    width: auto;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #16a085;
+}
+.button:hover {
+    cursor: pointer;
+}
+.button p {
+    font-family: 'Roboto';
+    font-size: 16px;
+    color: #FFF;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 8px;
+}
+.button .feedback {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    background-color: rgba(255, 255, 255, 0.5);
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    margin-left: -180px;
+    margin-top: -180px;
+    -webkit-transform: scaleX(0) scaleY(0);
+    transform: scaleX(0) scaleY(0);
+}

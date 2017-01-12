@@ -1,0 +1,123 @@
+<div class="fieldContainer">
+    <div class="header">
+        <div class="inline-block four-cells text-center">
+            <span class="bold">ProjectName</span>
+            <span>{{project.name}}</span>
+        </div>
+        <div class="inline-block four-cells text-center">
+            <span class="bold">Description</span>
+            <span>{{project.description || 'no description'}}</span>
+        </div>
+        <div class="inline-block four-cells text-center">
+            <span class="bold">Project Id</span>
+            <span>{{project.id}}</span>
+        </div>
+        <custom-button class="" on-click="generateProfileConfiguration()"
+                       custom-class="vertical-align-middle inline-block five-cells"
+                       name="Generate Configuration">
+        </custom-button>
+    </div>
+    <nav-tabs ng-if="tabs.length" tabs="tabs"
+              custom-class="tab-container"
+              default-tab="tabs[0]">
+    </nav-tabs>
+
+    <div ng-if="selectedTab.id === 'general'" class="generalFieldContainer">
+        <div class="propertiesContainer">
+            <table class="table table-hover table-mc-light-blue">
+                <tbody>
+                    <tr ng-repeat="generalProperty in generalProperties track by $index">
+
+                        <td class="bold">{{generalProperty.name}}</td>
+                        <td>
+                            <span type="text" >{{generalProperty.value}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div ng-if="selectedTab.id === 'parameters'" class="parameterFieldContainer">
+        <div class="propertiesContainer">
+            <table class="table table-hover table-mc-light-blue">
+                <tbody>
+                    <tr ng-repeat="parameter in parameters">
+                        <td class="bold">{{parameter.name}}</td>
+                        <td>
+                            <input ng-if="parameter.type === 'text'" type="text" ng-model="parameter.value">
+                            <select ng-if="parameter.type === 'dropdown'"
+                                    ng-model="parameter.value"
+                                    ng-change="updateParameter();"
+                                    ng-options="option.id as option.name for option in parameter.options">
+                            </select>
+                            <div ng-if="parameter.type === 'dynamicDropdown'">
+                                <table class="table table-hover table-mc-light-blue"
+                                       ng-if="parameter.data.length">
+                                    <thead>
+                                        <tr class="bold">
+                                            <td>#No</td>
+                                            <td>Name</td>
+                                            <td>Value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="option in parameter.data">
+                                            <td>{{$index + 1}}</td>
+                                            <td>{{option.name}}</td>
+                                            <td>{{option.value}}</td>
+                                            <td>
+                                                <span class="pointer"
+                                                      ng-click="deleteDynamicOptionFromListField(option);">
+                                                    delete
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button class=""
+                                        ng-click="addNewDynamicOptionToListField()">
+                                    Add Option+
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div ng-if="selectedTab.id === 'attributes'" class="attributeFieldContainer">
+        <div class="propertiesContainer">
+            <table class="table table-hover table-mc-light-blue">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Key</th>
+                        <th>Type</th>
+                        <th></th>
+                        <th>
+                            <custom-button on-click="addNewAttribute()"
+                                           custom-class="float-right"
+                                           name="Add New Attribute">
+                            </custom-button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="attribute in attributes"
+                        ng-click="navigateToField(attribute);"
+                        class="pointer">
+                        <td class="bold">{{attribute.name}}</td>
+                        <td>{{attribute.key}}</td>
+                        <td>{{attribute.type}}</td>
+                        <td>
+                            <span ng-click="updateAttribute(attribute);$event.stopPropagation();">edit</span>
+                        </td>
+                        <td>
+                            <span ng-click="deleteAttribute(attribute);$event.stopPropagation();">delete</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

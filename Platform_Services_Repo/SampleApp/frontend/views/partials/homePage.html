@@ -1,0 +1,26 @@
+<div id="homePageContainer">
+    <div id="bandsContainer">
+        <div class="spinner" ng-if="loading">
+            <img src="/images/loading_spinner.gif">
+        </div>
+        <div ng-repeat="band in bands" class="bands-container {{band.config.view}}">
+            <div class="title-container">
+                <div class="inline-block">{{band.config.title}}</div>
+                <div class="see-all" ng-if="band.config.see_all_options">
+                    <a href="">See All</a>
+                </div>
+            </div>
+            <div class="scroll-container">
+                <div class="item-container"
+                     style="width: {{band.width}}px">
+                    <div ng-repeat="item in band.data.items" class="item inline-block">
+                        <img src="{{item.thumbnailURL}}">
+                        <div class="title">{{item.name}}</div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

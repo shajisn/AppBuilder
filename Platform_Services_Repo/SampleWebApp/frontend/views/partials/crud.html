@@ -1,0 +1,82 @@
+<div class="contentArea">
+  <div class="crudsContainer">
+      <div class="spinner" ng-if="loading">
+          <img src="/images/loading_spinner.gif">
+      </div>
+      <div class="crudContainer" ng-repeat="crud in cruds">
+          <div class="buttonContainer">
+              <button class="button"
+                   ng-repeat="button in crud.buttons"
+                   ng-disabled="(button.type !== 'create' && !selectedRowArr.length)
+                    || (button.type === 'update' && selectedRowArr.length > 1)"
+                   ng-click="onButtonAction(button, crud);">
+                  <span>{{button.name}}</span>
+              </button>
+          </div>
+          <div class="contentContainer">
+              <div ng-if="crud.type === 'grid'">
+                  <table class="table table-hover table-mc-light-blue ">
+                      <thead>
+                      <tr>
+                          <th ng-repeat="field in crud.formData.fields">
+                              <div class="radio">
+                                <!--<input ng-if="field.type === 'identifier'"-->
+                                     <!--type="checkbox">-->
+                                <label></label>
+                              </div>
+                              <span ng-if="field.type !== 'identifier'">
+                                  {{field.display_name}}
+                              </span>
+                          </th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr ng-repeat="dataObj in crud.crudData">
+                          <td ng-repeat="(key, value) in dataObj">
+                              <span class="radio" ng-if="crud.formData.fieldsObj[key].type === 'identifier'"
+                                    data-id="{{value}}">
+                                   <input type="checkbox"
+                                          ng-model="checkboxFieldValues[value].value"
+                                          ng-change="updateSelectedRows(checkboxFieldValues[value].value, value)">
+                                    <label></label>
+                              </span>
+                              <span ng-if="crud.formData.fieldsObj[key].type !== 'identifier'">
+                                  <img ng-if="crud.formData.fieldsObj[key].type === 'file'"
+                                       src="{{value + '?' + randomValue}}">
+                                  <span ng-if="crud.formData.fieldsObj[key].type !== 'file'"
+                                        ng-bind="value">
+                                  </span>
+                              </span>
+
+
+                          </td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="thumbnail" ng-if="crud.type === 'thumbnail'">
+                  <div class="thumbnail-wrapper"
+                       ng-repeat="dataObj in crud.crudData"
+                       ng-class="{'selected': dataObj.isSelected}"
+                       ng-click="onThumbnailClick(dataObj);">
+                      <div class="thumbnail-row"
+                           ng-repeat="(key, value) in dataObj">
+
+                          <div ng-if="crud.formData.fieldsObj[key].type !== 'identifier'">
+                              <span class="thumbnail-row-header">{{key}}</span>
+                              <img src="{{value}}"
+                                   class="thumbnail-row-content"
+                                   ng-if="crud.formData.fieldsObj[key].type === 'file'">
+                              <span ng-bind="value"
+                                    class="thumbnail-row-content"
+                                    ng-if="crud.formData.fieldsObj[key].type !== 'file'">
+                              </span>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

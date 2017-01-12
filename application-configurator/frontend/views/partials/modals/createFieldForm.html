@@ -1,0 +1,34 @@
+<div class="">
+
+    <div class="error" ng-if="error">{{error}}</div>
+    <form>
+        <h1>{{heading}}</h1>
+        <div class="item-container">
+            <span>Name: </span>
+            <input ng-change="fieldNameChanged();" placeholder="" type="text" ng-model="fieldObj.name">
+        </div>
+        <div class="item-container">
+            <span>Key: </span>
+            <input placeholder="" ng-model="fieldObj.key">
+        </div>
+
+        <div class="item-container">
+            <span>Type: </span>
+            <select ng-model="fieldObj.type"
+                    ng-options="type.id as type.name for type in types">
+            </select>
+        </div>
+
+        <div class="item-container">
+            <span>Section: </span>
+            <select ng-model="fieldObj.sectionId"
+                    ng-options="section.id as section.name for section in sections">
+            </select>
+        </div>
+
+        <div class="button-container text-center">
+            <button ng-click="dismiss();" class="white-background">Cancel</button>
+            <button ng-click="save();" class="blue-background">Save</button>
+        </div>
+    </form>
+</div>

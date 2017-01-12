@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <!--<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7">--> <![endif]-->
+<!--[if IE 7]>         <!--<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8">--> <![endif]-->
+<!--[if IE 8]>         <!--<html lang="en" ng-app="myApp" class="no-js lt-ie9">--> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Media Manager</title>
+  <base href="/">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="styles/customButton.css">
+  <link rel="stylesheet" href="styles/modal.css">
+  <link rel="stylesheet" href="styles/project.css">
+  <link rel="stylesheet" href="styles/table.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/template.css">
+  <link rel="stylesheet" href="styles/boolean.css">
+  <!--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">-->
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body ng-app="mediaManager">
+
+  <nav-bar></nav-bar>
+
+  <div ui-view=""></div>
+
+  <div class="footerContainer">Footer</div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/localforage/dist/localforage.js"></script>
+  <script src="bower_components/angular-localforage/dist/angular-localForage.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>-->
+
+  <script src="extensions/angular-bootstrap-partial.js"></script>
+
+  <script src="scripts/app.js"></script>
+
+  <script src="scripts/states/home.js"></script>
+  <script src="scripts/states/project.js"></script>
+  <script src="scripts/states/profile.js"></script>
+  <script src="scripts/states/field.js"></script>
+  <script src="scripts/states/template.js"></script>
+
+  <script src="scripts/controllers/homePageController.js"></script>
+  <script src="scripts/controllers/projectController.js"></script>
+  <script src="scripts/controllers/profileController.js"></script>
+  <script src="scripts/controllers/fieldController.js"></script>
+  <script src="scripts/controllers/templateController.js"></script>
+  <script src="scripts/controllers/templatePageController.js"></script>
+
+  <script src="scripts/directives/customButton.js"></script>
+  <script src="scripts/directives/navTabs.js"></script>
+  <script src="scripts/directives/navBar.js"></script>
+
+  <script src="scripts/managers/projectManager.js"></script>
+  <script src="scripts/managers/profileManager.js"></script>
+  <script src="scripts/managers/applicationManager.js"></script>
+  <script src="scripts/managers/ruleManager.js"></script>
+  <script src="scripts/managers/configurationManager.js"></script>
+  <script src="scripts/managers/templateManager.js"></script>
+
+  <script src="scripts/services/createForm.js"></script>
+  <script src="scripts/services/createRuleForm.js"></script>
+  <script src="scripts/services/createFieldForm.js"></script>
+  <script src="scripts/services/createAttributeForm.js"></script>
+  <script src="scripts/services/createSelectOptionForm.js"></script>
+  <script src="scripts/services/createTemplateForm.js"></script>
+  <script src="scripts/services/createTemplateFieldForm.js"></script>
+  <script src="scripts/services/projectService.js"></script>
+  <script src="scripts/services/profileService.js"></script>
+  <script src="scripts/services/applicationService.js"></script>
+  <script src="scripts/services/ruleService.js"></script>
+  <script src="scripts/services/configurationService.js"></script>
+  <script src="scripts/services/templateService.js"></script>
+
+  <script src="scripts/commons/restClient.js"></script>
+</body>
+</html>

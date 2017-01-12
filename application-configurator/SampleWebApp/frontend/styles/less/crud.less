@@ -1,0 +1,39 @@
+.thumbnail{
+    display: inline-block;
+    text-align: center;
+}
+.thumbnail-wrapper{
+    &.selected{
+        background: black;
+        color: white;
+    }
+    display: inline-block;
+    width: 30%;
+    margin: 1% 1.6%;
+    background: white;
+    float: left;
+    min-height: 450px;
+    padding: 1%;
+    cursor: pointer;
+}
+.thumbnail-row{
+    display: block;
+    text-align: left;
+    padding: 5px 0px;
+}
+
+.thumbnail-row-header{
+    display: inline-block;
+    font-weight: bold;
+    width: 48%;
+    text-transform: capitalize;
+}
+.thumbnail-row-content{
+    display: inline-block;
+    width: 48%;
+}
+img.thumbnail-row-content{
+    height: 170px;
+    width: 42%;
+    margin-left: 3%;
+}

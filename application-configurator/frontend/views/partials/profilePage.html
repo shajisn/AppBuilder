@@ -1,0 +1,138 @@
+<div class="profileContainer">
+    <div class="header display-table full-width">
+        <div class="display-table-cell text-center">
+            <span class="bold">ProjectName</span>
+            <span>{{project.name}}</span>
+        </div>
+        <div class="display-table-cell text-center">
+            <span class="bold">Description</span>
+            <span>{{project.description || 'no description'}}</span>
+        </div>
+        <div class="display-table-cell text-center">
+            <span class="bold">Project Id</span>
+            <span>{{project.id}}</span>
+        </div>
+        <div class="display-table-cell text-center">
+            <span class="bold">ProfileName </span>
+            <span>{{profile.name}}</span>
+        </div>
+        <div class="display-table-cell text-center">
+            <span class="bold">Description </span>
+            <span>{{profile.description || 'no description'}}</span>
+        </div>
+        <div class="display-table-cell text-center">
+            <span class="bold">Profile Id </span>
+            <span>{{profile.id}}</span>
+        </div>
+        <custom-button name="Save"
+                       custom-class="display-table-cell"
+                       on-click="saveValueToProfileConfiguration();" >
+        </custom-button>
+    </div>
+    <!--<nav-tabs ng-if="sections.length" tabs="sections"-->
+              <!--default-tab="sections[0]"-->
+              <!--custom-class="tab-container full-width display-table"-->
+              <!--sub-custom-class="display-table-cell">-->
+    <!--</nav-tabs>-->
+    <div class="tab-container full-width display-table">
+        <div class="inline-block five-cells pointer padding text-center display-table-cell"
+             ng-repeat="section in sections"
+             ng-class="{'selected': selectedSection.id === section.id}"
+             ng-click="changeSection(section);">
+            <span>{{section.name}}</span>
+        </div>
+    </div>
+
+    <div class="sectionContainer">
+        <div class="title table-head">
+            Fields
+        </div>
+        <div class="fieldsContainer">
+            <table class="table table-hover table-mc-light-blue">
+                <tbody>
+                    <tr ng-repeat="field in seclectedFields">
+                        <td>
+                            <div>
+                                <div class="bold">{{field.name}}</div>
+                                <span>{{field.type}}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <div ng-if="field.type === 'text'">
+                                    <input type="text"
+                                           ng-change="field.enabled = true;"
+                                           ng-model="field.value"
+                                           class="inline-block">
+                                    <button class="saveValueButton"
+                                            ng-click="saveFieldValue(field);"
+                                            ng-disabled="!field.enabled">
+                                        Save
+                                    </button>
+                                </div>
+                                <div ng-if="field.type === 'list'">
+                                    <select ng-model="field.value"
+                                            ng-options="option.value as option.name for option in field.parameters[1].data"
+                                            ng-change="saveFieldValue(field);">
+                                        <option value="">--NULL--</option>
+                                    </select>
+                                </div>
+                                <div ng-if="field.type === 'template'">
+                                    <select ng-model="field.value"
+                                            ng-options="template.id as template.name for template in templates"
+                                            ng-change="saveFieldValue(field);">
+                                    </select>
+                                </div>
+                                <div ng-if="field.type === 'boolean'">
+                                    <div class="row press">
+                                        <input type="checkbox" id="{{field.id}}" class="cbx hidden" checked
+                                               ng-change="saveFieldValue(field);"
+                                               ng-model="field.value"/>
+                                        <label for="{{field.id}}" class="lbl"></label>
+                                    </div>
+                                </div>
+                                <div ng-if="field.type === 'complex'">
+                                    <div ng-if="field.parameters[0].value === 'no'">
+                                        <div class="pointer">
+                                            <a ng-click="navigateToChildField(field, valueObj);">
+                                                Click To View or Edit Value
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div ng-if="field.parameters[0].value !== 'no'">
+                                        <table class="table table-hover table-mc-light-blue">
+                                            <tbody>
+                                            <tr ng-repeat="valueObj in field.valueList[profileId]"
+                                                ng-click="navigateToChildField(field, valueObj);"
+                                                class="pointer">
+                                                <td>
+                                                    <span>{{$index + 1}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="pointer">
+                                                        {{valueObj.name}}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="pointer"
+                                                          ng-click="deleteValueFromComplexField(valueObj, field);$event.stopPropagation();">
+                                                        delete
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="buttonContainer">
+                                            <button ng-click="addValueToComplexField(field);">Add More+</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

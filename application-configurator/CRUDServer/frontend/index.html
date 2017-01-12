@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <div>name: <input id="name"></div>
+    <div>address: <input id="address"></div>
+    <div>dateOfBirth: <input id="dateOfBirth" type="date"></div>
+    <div>mobile: <input id="mobile"></div>
+    <div>sex: <input id="sex"></div>
+    <div>image: <input id="image" type="file"></div>
+    <button type="button" onclick="saveUser()">Save</button>
+</form>
+<script>
+    function saveUser(){
+        var xhr = new XMLHttpRequest();
+        var formData = new FormData();
+
+        var data = {
+            name: document.getElementById('name').value,
+            address: address.value,
+            dateOfBirth: dateOfBirth.value,
+            mobile: mobile.value,
+            sex: sex.value
+        };
+        formData.append('data', JSON.stringify(data));
+        formData.append('image', image.files[0]);
+        xhr.open('POST', 'http://localhost:10000/api/user/setData', true);
+
+
+//        formData.append('templateId', '58323315132551747517');
+//        formData.append('method', 'post');
+//        formData.append('fileKey', 'image');
+//        formData.append('image', image.files[0]);
+//        xhr.open('POST', 'http://localhost:9400/api/public/execute', true);
+        xhr.send(formData);
+    }
+</script>
+</body>
+</html>

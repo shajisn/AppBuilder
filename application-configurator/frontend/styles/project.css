@@ -1,0 +1,9 @@
+.tab-container{
+    display: block;
+    background: white;
+    margin: 10px 0px;
+}
+
+.tab-container .selected{
+    border-bottom: 3px solid #16A085;
+}

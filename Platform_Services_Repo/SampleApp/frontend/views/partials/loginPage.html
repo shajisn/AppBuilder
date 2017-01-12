@@ -1,0 +1,36 @@
+    <div class="signupContainer">
+<!--         <div class="spinner" ng-if="loading">
+            <img src="/images/loading_spinner.gif">
+        </div> -->
+        <div class="bands-container">
+            <!-- <form class="form-horizontal" name="loginForm" ng-controller="LoginPageCtrl" ng-submit="signup(credentials)" role="form">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input id="usernameinput" class="form-control" ng-model="credentials.username" type="text" ng-disabled="loggingIn" ng-click="toggleDropdown($event, 'signin');" placeholder="username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" ng-model="credentials.password" type="password" ng-disabled="loggingIn" ng-click="toggleDropdown($event, 'signin');" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group button-group signin-button-group">
+                        <button class="btn btn-primary"  type="submit" ng-class="{'active': loggingIn}" ng-disabled="loggingIn">SIGNUP</button>
+                    </div>
+            </form> -->
+            <form class="form-horizontal" name="loginForm" ng-submit="signup(credentials)" role="form">
+                <div class="form-group" ng-repeat="field in fields" ng-if="field.id">
+                    <label for="{{field.id}}" class="field-label">{{field.display_name}}</label>
+                    <input ng-if="field.type != 'dropdown' && field.type != 'dynamicDropdown'" id="{{field.id}}" class="form-control" ng-model="credentials[field.id]" type="{{field.type}}" placeholder="{{field.display_name}}">
+
+                    <select ng-if="field.type == 'dropdown' || field.type == 'dynamicDropdown'" ng-model="credentials[field.id]" class="form-control">
+                        <option value="">---Please select---</option>
+                        <option  ng-repeat="option in field.options" value="{{option.value}}">{{option.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn-submit" type="submit">SIGNUP</button>
+                </div>
+            </form>
+        </div>
+    </div>

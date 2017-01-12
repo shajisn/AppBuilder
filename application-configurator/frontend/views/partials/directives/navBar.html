@@ -1,0 +1,8 @@
+<div class="tab-container full-width display-table">
+    <div class="inline-block five-cells pointer padding text-center display-table-cell"
+         ng-click="changeNabBarTab(tab);"
+         ng-repeat="tab in tabs"
+         ng-class="{'selected': selectedTab.id === tab.id}">
+        <span>{{tab.name}}</span>
+    </div>
+</div>

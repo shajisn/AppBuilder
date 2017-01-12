@@ -1,0 +1,95 @@
+.form-container{
+    padding: 1px;
+}
+.form-group{
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.formContainer {
+    .field-label {
+        float: left;
+        width: 20%;
+        margin: 11px 0px;
+        color: #737373;
+    }
+
+    input, select {
+        width: 80%;
+        float: left;
+        padding: 12px 20px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    form{
+        width: 584px;
+        margin: 40px auto;
+    }
+    @media (max-width: 640px){
+        form{
+            width: 100%;
+        }
+        .field-label{
+            float: left;
+            width: 100%;
+            margin: 5px 0px;
+            line-height: 17px;
+        }
+        input, select {
+            width: 100%;
+        }
+    }
+
+}
+.form-button-group{
+    display: inline-block;
+    width: 100%;
+    padding-left: 20%;
+    .form-button{
+        width: 48%;
+        float: left;
+    }
+    .form-button:first-child{
+        margin-right: 4%;
+    }
+    @media (max-width: 640px){
+        padding-left: 0%;
+    }
+}
+.form-file-image{
+    width: 130px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.errorMessage{
+    color:red;
+    text-align: center;
+    width: 58%;
+    margin-top: 19px;
+}
+.radio-button-container{
+    display: inline-block;
+    margin-right: 15px;
+    span{
+        margin-right: 4px;
+    }
+    input{
+        float: none;
+        width: auto;
+        position: relative;
+        top: 2px;
+    }
+}

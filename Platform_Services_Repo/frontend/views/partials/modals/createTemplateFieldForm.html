@@ -1,0 +1,33 @@
+<div class="createProjectFormContainer">
+
+    <div class="error" ng-if="error">{{error}}</div>
+    <form>
+        <h1>{{heading}}</h1>
+        <div class="item-container">
+            <span>Name: </span>
+            <input placeholder="" type="text" ng-model="templateFieldObj.name">
+        </div>
+
+        <div class="item-container">
+            <span>Type: </span>
+            <select ng-model="templateFieldObj.type"
+                    ng-options="type.id as type.name for type in types"
+                    ng-change="onTemplateTypeChange(templateFieldObj.type);">
+            </select>
+        </div>
+        <div ng-if="templateFieldObj.type !== 'object'" class="item-container">
+            <span>Value In Original JSON: </span>
+            <input placeholder="" type="text" ng-model="templateFieldObj.value">
+        </div>
+        <div class="item-container">
+            <span>Description: </span>
+            <textarea placeholder="" ng-model="templateFieldObj.description"></textarea>
+        </div>
+
+
+        <div class="button-container text-center">
+            <button ng-click="dismiss();" class="white-background">Cancel</button>
+            <button ng-click="save();" class="blue-background">Save</button>
+        </div>
+    </form>
+</div>

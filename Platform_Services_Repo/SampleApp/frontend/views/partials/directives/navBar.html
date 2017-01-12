@@ -1,0 +1,8 @@
+<div class="nav-container">
+    <div class="nav-item" ng-repeat="tab in tabs" ng-if="tab.shown">
+        <img src="{{tab.image}}">
+        <div class="nav-title">
+        	<a href="{{tab.action}}"> {{tab.name}} </a>
+        </div>
+    </div>
+</div>

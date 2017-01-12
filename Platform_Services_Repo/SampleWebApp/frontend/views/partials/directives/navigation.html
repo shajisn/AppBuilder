@@ -1,0 +1,18 @@
+<ul class="nav-container">
+    <li class="nav-item" ng-repeat="item in menu" ng-class="{'selected': item.id === selectedMenu.id}" ng-click="onSelect(item);$event.stopPropagation()" ng-if="item.shown">
+        <div class="nav-title">
+            <span >
+                {{item.name}}
+            </span>
+        </div>
+        <span class="icon-arrow-right-small"
+              ng-class="{'show': item.children.length > 0}">
+        </span>
+        <!-- <img src="{{item.image}}"> -->
+        <ul class="childrenContainer" ng-if="item.children.length > 0">
+            <navigation menu="item.children">
+
+            </navigation>
+        </ul>
+    </li>
+</ul>

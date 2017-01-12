@@ -1,0 +1,11 @@
+.gradle
+.DS_Store
+
+#Android Studio files
+.idea
+local.properties
+*.iml
+
+build
+bin
+via-app/src/res/values/com_crashlytics_export_strings.xml

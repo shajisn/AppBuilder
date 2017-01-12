@@ -1,0 +1,50 @@
+<div class="singleTemplate">
+    <div class="header">
+        <div class="inline-block four-cells text-center">
+            <span class="bold">Template Name</span>
+            <span>{{template.name}}</span>
+        </div>
+        <div class="inline-block four-cells text-center">
+            <span class="bold">Description</span>
+            <span>{{template.description || 'no description'}}</span>
+        </div>
+        <div class="inline-block four-cells text-center">
+            <span class="bold">Template Id</span>
+            <span>{{template.id}}</span>
+        </div>
+        <custom-button on-click="generateTemplateConfiguration();"
+                       custom-class="vertical-align-middle inline-block five-cells"
+                       name="Generate Configuration">
+        </custom-button>
+    </div>
+    <div id="fieldContainer">
+        <table class="table table-hover table-mc-light-blue">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th></th>
+                    <th>
+                        <custom-button class="" on-click="addNewField();"
+                                       custom-class="vertical-align-middle inline-block"
+                                       name="Add New Field">
+                        </custom-button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="field in template.fields"
+                    class="pointer" ng-click="navigateToField(field);">
+                    <td>{{field.name}}</td>
+                    <td>{{field.value}}</td>
+                    <td>{{field.description}}</td>
+                    <td>{{field.type}}</td>
+                    <td ng-click="updateField(field);$event.stopPropagation();">update</td>
+                    <td ng-click="deleteField(field);$event.stopPropagation();">delete</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
